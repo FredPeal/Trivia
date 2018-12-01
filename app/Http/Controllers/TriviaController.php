@@ -16,6 +16,7 @@ class TriviaController extends Controller
     public function index()
     {
         //
+        return view('trivias.index');
     }
 
     /**
@@ -26,6 +27,7 @@ class TriviaController extends Controller
     public function create()
     {
         //
+        return view('trivias.create');
     }
 
     /**
@@ -52,7 +54,7 @@ class TriviaController extends Controller
 
         $trivias=Trivia::join('preguntas','preguntas.idtrivia','=','trivias.id')
                       ->join('respuestas','respuestas.idpregunta','=','preguntas.id')
-                      ->select('preguntas.pregunta','respuestas.respuesta','respuestas.correcto')
+                      ->select('preguntas.pregunta','preguntas.id','respuestas.respuesta','respuestas.correcto')
                       ->get();
         $pregunta_actual=null;
         $key=0;
