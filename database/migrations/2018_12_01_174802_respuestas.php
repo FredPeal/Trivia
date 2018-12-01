@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Trivia extends Migration
+class Respuestas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class Trivia extends Migration
      */
     public function up()
     {
-        Schema::create('trivias', function (Blueprint $table) {
+        Schema::create('respuestas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('iduser')->unsigned();
-            $table->string('nombre');
-            $table->text('descripcion')->nullable();
-            $table->integer('puntaje');
-            $table->foreign('iduser')->references('id')->on('users');
+            $table->integer('idpregunta')->unsigned();
+            $table->string('respuesta');
+            $table->boolean('correcto')->default(false);
+            $table->foreign('idpregunta')->references('id')->on('preguntas');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class Trivia extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trivias');
+        Schema::dropIfExists('respuestas');
     }
 }
