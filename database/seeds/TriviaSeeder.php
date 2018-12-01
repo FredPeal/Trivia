@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Trivia;
+use \App\Trivia;
 class TriviaSeeder extends Seeder
 {
     /**
@@ -12,6 +12,6 @@ class TriviaSeeder extends Seeder
     public function run()
     {
         //
-        Trivia::create([""])
+        Trivia::create(["iduser"=>1,"nombre"=>"HTML AND CSS","descripcion"=>"First Test","puntaje"=>50]);
     }
 }

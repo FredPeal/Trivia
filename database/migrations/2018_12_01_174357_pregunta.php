@@ -17,9 +17,9 @@ class Pregunta extends Migration
             $table->increments('id');
             $table->integer('idtrivia')->unsigned();
             $table->string('pregunta');
-            $table->boolean('multiple_respuesta');
+            $table->boolean('multiple_respuesta')->default(false);
             $table->boolean('image')->default(false);
-            $table->string('url_image');
+            $table->string('url_image')->nullable();
             $table->foreign('idtrivia')->references('id')->on('trivias');
             $table->timestamps();
         });
